@@ -1,4 +1,4 @@
-# Cursando AESA — examen de repaso (no oficial)
+# Cursando AESA — examen de repaso (no oficial) Para Piloto de drones en categoría abierta A1/A3
 
 Un examen tipo test interactivo para practicar de cara al examen teórico de piloto de dron (UAS, categoría abierta). Cada intento saca 30 preguntas al azar de un banco de 296, en orden y con respuestas también barajadas, para que sirva de verdad como repaso y no como memorización de posiciones.
 
