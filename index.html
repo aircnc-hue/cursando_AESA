@@ -512,10 +512,10 @@ button{ font-family:inherit; }
     <div class="hero">
       <div class="hero-kicker">Simulacro de examen</div>
       <h1>Prepara tu<br><em>examen de piloto</em><br>de drones</h1>
-      <p>30 preguntas tipo test extraídas del temario oficial AESA (categoría abierta: normativa, vuelo, meteorología, espacio aéreo, privacidad y procedimientos). Cada intento mezcla preguntas y respuestas nuevas.</p>
+      <p><span id="intro-qcount">30</span> preguntas tipo test extraídas del temario oficial AESA (categoría abierta: normativa, vuelo, meteorología, espacio aéreo, privacidad y procedimientos). Cada intento mezcla preguntas y respuestas nuevas.</p>
       <div class="hero-stats">
         <div class="hstat"><b id="stat-bank">—</b><span>Preguntas en el banco</span></div>
-        <div class="hstat"><b>30</b><span>Por examen</span></div>
+        <div class="hstat"><b id="stat-examlen">30</b><span>Por examen</span></div>
         <div class="hstat"><b id="stat-best">—</b><span>Mejor resultado</span></div>
       </div>
       <button class="btn btn-primary" id="btn-start">Iniciar examen <span class="btn-arrow">→</span></button>
@@ -539,7 +539,7 @@ button{ font-family:inherit; }
         <div class="hud-item"><b id="hud-score">0</b><span>Aciertos</span></div>
         <div class="hud-item hud-streak"><b id="hud-streak">0</b><span>Racha</span></div>
       </div>
-      <div class="hud-qcount">Pregunta <b id="hud-qnum">1</b>/30</div>
+      <div class="hud-qcount">Pregunta <b id="hud-qnum">1</b>/<span id="hud-qtotal">30</span></div>
     </div>
     <div class="qcard">
       <div class="qtopic" id="q-topic">Tema</div>
@@ -557,7 +557,7 @@ button{ font-family:inherit; }
     <div class="result-hero">
       <div class="result-kicker">Informe post-vuelo</div>
       <div class="result-pct" id="res-pct">0%</div>
-      <div class="result-frac" id="res-frac">0 / 30 correctas</div>
+      <div class="result-frac" id="res-frac">0 / 40 correctas</div>
       <div class="result-status" id="res-status">—</div>
       <div class="result-note">El examen oficial de AESA para categoría abierta exige un 75% de aciertos.</div>
     </div>
@@ -610,6 +610,9 @@ function saveAttempt(pct, correctCount){
 
 function renderStart(){
   document.getElementById('stat-bank').textContent = QUESTIONS.length;
+  document.getElementById('stat-examlen').textContent = EXAM_LEN;
+  document.getElementById('intro-qcount').textContent = EXAM_LEN;
+  document.getElementById('hud-qtotal').textContent = EXAM_LEN;
   const hist = loadHistory();
   const best = hist.length ? Math.max(...hist.map(h=>h.pct)) : null;
   document.getElementById('stat-best').textContent = best !== null ? best + '%' : '—';
